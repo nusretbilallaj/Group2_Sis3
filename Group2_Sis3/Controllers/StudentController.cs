@@ -1,6 +1,7 @@
 ﻿using Group2_Sis3.Data;
 using Group2_Sis3.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Group2_Sis3.Controllers
 {
@@ -19,7 +20,35 @@ namespace Group2_Sis3.Controllers
         public IActionResult Krijo()
         {
             Studenti stu = new Studenti();
+            ViewBag.Komunat = _konteksti.Komunat.ToList().Select(kom => new SelectListItem()
+            {
+                Text = kom.Emri,
+                Value = kom.Id.ToString()
+            });
             return View(stu);
+        }
+        [HttpPost]
+        public IActionResult Krijo(Studenti stud)
+        {
+            if (stud.KomunaId==0)
+            {
+                ModelState.AddModelError("KomunaId","Specifiko komunen");
+            }
+            if (ModelState.IsValid)
+            {
+                _konteksti.Add(stud);
+                _konteksti.SaveChanges();
+                return RedirectToAction("Listo");
+            }
+            else
+            {
+                ViewBag.Komunat = _konteksti.Komunat.ToList().Select(kom => new SelectListItem()
+                {
+                    Text = kom.Emri,
+                    Value = kom.Id.ToString()
+                });
+                return View(stud);
+            }
         }
     }
 }

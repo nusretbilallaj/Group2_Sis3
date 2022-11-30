@@ -1,39 +1,44 @@
 ﻿@model List<Studenti>
 
-<div class="container">
-    <div class="row mt-1" >
-        <div class="col-6 pb-3">
+<div class="container p-3" >
+    <div class="row pt-4"  >
+        <div class="col-6 pb-3" >
             <h2>Lista e studenteve</h2>
         </div>
-        <div class="col-6 text-end">
-            <a class="btn btn-success" asp-controller="Student" asp-action="Krijo">Shto student</a>
+        <div class="col-6 text-end" >
+            <a class="btn btn-success"
+               asp-controller="Student"
+               asp-action="Krijo">
+                <i class="bi bi-0-square-fill"></i>&nbsp;
+                Shto student
+            </a>
         </div>
     </div>
+    <table class="table table-bordered table-striped">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Emri</th>
+            <th>Mbiemri</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (Studenti stud in Model)
+        {
+            <tr>
+                <td>
+                    @stud.Id
+                </td>
+                <td>
+                    @stud.Emri
+                </td>
+                <td>
+                    @stud.Mbiemri
+                </td>
+            </tr>
+        }
+   
+        </tbody>
+    </table>
 </div>
 
-<table class="table table-bordered table-danger">
-    <thead>
-    <tr>
-        <th>Id</th>
-        <th>Emri</th>
-        <th>Mbiemri</th>
-    </tr>
-    </thead>
-    <tbody>
-    @foreach (Studenti stud in Model)
-    {
-        <tr>
-            <td>
-                    @stud.Id
-            </td>
-            <td>
-                @stud.Emri
-            </td>
-            <td>
-                @stud.Mbiemri
-            </td>
-        </tr>
-    }
-   
-    </tbody>
-</table>
