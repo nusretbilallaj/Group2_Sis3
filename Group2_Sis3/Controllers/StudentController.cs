@@ -16,5 +16,10 @@ namespace Group2_Sis3.Controllers
             List<Studenti> lista = _konteksti.Studentet.ToList();
             return View(lista);
         }
+        public IActionResult Krijo()
+        {
+            Studenti stu = new Studenti();
+            return View(stu);
+        }
     }
 }
