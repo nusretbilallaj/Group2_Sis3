@@ -1,0 +1,29 @@
+﻿@model Studenti
+
+<form method="post">
+    <div class="border p-4">
+        <div class="row p-3">
+            Fshirja e studentit
+            <hr/>
+        </div>
+        <input type="hidden" asp-for="Id"/>
+        <div class="mb-3">
+            <label asp-for="Emri"></label>
+            <input readonly  asp-for="Emri" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Mbiemri"></label>
+            <input readonly asp-for="Mbiemri" class="form-control"/>
+          
+        </div>
+        <div class="mb-3">
+            <label asp-for="KomunaId"></label>
+            <select asp-for="KomunaId" class="form-select" asp-items="ViewBag.Kom">
+                <option selected value="0">Cakto komunen</option>
+            </select>
+            
+        </div>
+        <button type="submit" class="btn btn-success">Fshi</button>
+        <a class="btn btn-secondary" asp-controller="Student" asp-action="Listo">Kthehu</a>
+    </div>
+</form>

@@ -20,6 +20,7 @@
             <th>Id</th>
             <th>Emri</th>
             <th>Mbiemri</th>
+            <th>Veprimi</th>
         </tr>
         </thead>
         <tbody>
@@ -34,6 +35,12 @@
                 </td>
                 <td>
                     @stud.Mbiemri
+                </td>
+                <td>
+                    <div>
+                        <a class="btn btn-warning" asp-controller="Student" asp-action="Edito" asp-route-id="@stud.Id" >Ndrysho</a>
+                        <a class="btn btn-danger" asp-controller="Student" asp-action="Fshi" asp-route-id="@stud.Id" >Fshi</a>
+                    </div>
                 </td>
             </tr>
         }
