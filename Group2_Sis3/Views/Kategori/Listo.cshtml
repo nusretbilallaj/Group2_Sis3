@@ -1,0 +1,47 @@
+﻿@model List<Kategoria>
+
+<div class="container p-3" >
+    <div class="row pt-4"  >
+        <div class="col-6 pb-3" >
+            <h2>Lista e kategorive</h2>
+        </div>
+        <div class="col-6 text-end" >
+            <a class="btn btn-success"
+               asp-controller="Kategori"
+               asp-action="Krijo">
+                <i class="bi bi-0-square-fill"></i>&nbsp;
+                Shto kategori
+            </a>
+        </div>
+    </div>
+    <table class="table table-bordered table-striped">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Emri</th>
+            <th>Veprimi</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (Kategoria kat in Model)
+        {
+            <tr>
+                <td>
+                        @kat.Id
+                </td>
+                <td>
+                        @kat.Emri
+                </td>
+                <td>
+                    <div>
+                        <a class="btn btn-warning" asp-controller="Kategori" asp-action="Edito" asp-route-id="@kat.Id" >Ndrysho</a>
+                        <a class="btn btn-danger" asp-controller="Kategori" asp-action="Fshi" asp-route-id="@kat.Id" >Fshi</a>
+                    </div>
+                </td>
+            </tr>
+        }
+   
+        </tbody>
+    </table>
+</div>
+

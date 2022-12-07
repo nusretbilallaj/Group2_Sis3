@@ -1,0 +1,17 @@
+﻿@model Kategoria
+
+<form method="post">
+    <div class="border p-4">
+        <div class="row p-3">
+            Editimi i Kategorise
+            <hr/>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Emri"></label>
+            <input asp-for="Emri" class="form-control"/>
+            <span asp-validation-for="Emri" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-success">Edito</button>
+        <a class="btn btn-secondary" asp-controller="Kategori" asp-action="Listo">Kthehu</a>
+    </div>
+</form>

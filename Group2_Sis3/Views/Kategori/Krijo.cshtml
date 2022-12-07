@@ -1,0 +1,20 @@
+﻿@model Kategoria
+
+
+<form method="post">
+    <div class="border  p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Shto kategori</h2>
+            <hr />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Emri"></label>
+            <input asp-for="Emri" class="form-control" />
+            <span asp-validation-for="Emri" class="text-warning"></span>
+        </div>
+        <button type="submit" class="btn btn-success" style="width: 150px;">Shto</button>
+        <a class="btn btn-secondary" asp-controller="Kategori" asp-action="Listo" style="width: 150px;">
+            Kthehu 
+        </a>
+    </div>
+</form>

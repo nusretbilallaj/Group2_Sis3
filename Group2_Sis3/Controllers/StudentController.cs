@@ -18,7 +18,25 @@ namespace Group2_Sis3.Controllers
             List<Studenti> lista = _konteksti.Studentet.ToList();
             return View(lista);
         }
+        public IActionResult Edito(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
 
+            Studenti studentDb = _konteksti.Studentet.Find(id);
+            if (studentDb == null)
+            {
+                return NotFound();
+            }
+            ViewBag.Kom = _konteksti.Komunat.ToList().Select(kom => new SelectListItem()
+            {
+                Text = kom.Emri,
+                Value = kom.Id.ToString()
+            });
+            return View(studentDb);
+        }
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Edito(Studenti stud)
@@ -69,25 +87,7 @@ namespace Group2_Sis3.Controllers
             });
             return View(studentDb);
         }
-        public IActionResult Edito(int? id)
-        {
-            if (id==null || id==0)
-            {
-                return NotFound();
-            }
-
-            Studenti studentDb = _konteksti.Studentet.Find(id);
-            if (studentDb==null)
-            {
-                return NotFound();
-            }
-            ViewBag.Kom = _konteksti.Komunat.ToList().Select(kom => new SelectListItem()
-            {
-                Text = kom.Emri,
-                Value = kom.Id.ToString()
-            });
-            return View(studentDb);
-        }
+        
         public IActionResult Krijo()
         {
             // Studenti stu = new();
